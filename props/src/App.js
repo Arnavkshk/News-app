@@ -23,12 +23,14 @@ function App() {
     if(mode==="dark"){
     setmode("light");
     document.body.style.backgroundColor="white";
-    showalert("Dark mode have been enabled!","success!");
+    showalert("Light mode have been enabled!","success!");
+    document.title="Light mode enabled";
   }
   else{
     setmode("dark");
     document.body.style.backgroundColor="black";
-    showalert("light mode have been enabled!","success!");
+    showalert("Dark mode have been enabled!","success!");
+    document.title="Light mode enabled";
 
   }
   }
