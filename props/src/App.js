@@ -4,14 +4,8 @@ import Textarea from './components/Textarea';
 import About from './components/About';
 import { useState } from 'react';
 import Alert from './components/Alert';
-// import { Routes ,Route } from 'react-router-dom';
-import{
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
+import React from "react";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 function App() {
   const[mode,setmode]=useState("light");
   const[alert,setalert]=useState(null);
@@ -47,15 +41,12 @@ function App() {
     <Navbar title="Navbar" mode={mode} togglemode={togglemode}/>
     <Alert alert={alert}/>
     <div className="container my-3">
-    <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/">
+    <Routes>
+          <Route exact path="/about" element={<About />}/>
+          <Route exact path="/">
           <Textarea showalert={showalert} heading="Enter your text here" mode={mode}/>
           </Route>
-    </Switch>
-    <About/>
+    </Routes>
     </div>
     </Router>
     </>
