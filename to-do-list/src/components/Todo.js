@@ -23,7 +23,7 @@ if(edit.id){
 
   return todos.map((todo,index)=>(
     <div className={todo.iscomplete ? 'todo-row complete':'todo-row'} key={index}>
-        <div key={todo.id} onClick={()=>completeTodo(Todo.id)}>todo.text</div>
+        <div key={todo.id} onClick={()=>completeTodo(Todo.id)}>{todo.text}</div>
         <div className="icons">
             <RiCloseCircleLine onClick={()=>removetodo(todo.id)}className='delete-icon'/>
             <TiEdit onClick={()=>setEdit({id: todo.id, value: todo.text})}className='edit-icon'/>
@@ -32,4 +32,4 @@ if(edit.id){
   ))
 }
 
-export default Todo
+export default Todo;

@@ -12,10 +12,11 @@ export default function List() {
         setTodos(newtodo);
       };
     const updatetodo = (todoId,newValue)=>{
-      if(!newValue.text||/^\s*$/.test(newValue.text)){
+      if(!newValue.text || /^\s*$/.test(newValue.text)){
         return;
       }
-      setTodos(prev=>prev.map(item =>(item.id===todoId ? newValue : item)));
+      setTodos(prev=>prev.map(item =>(item.id===todoId ? newValue : item))
+      );
     };
 
     const removetodo = id =>{
