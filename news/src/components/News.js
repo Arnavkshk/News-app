@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import NewsItems from './NewsItems'
 
 export class News extends Component {
+  constructor(){
+    super();
+    console.log("hello i am a constructor");
+    this.state={
+      
+    }
+  }
   render() {
     return (
       <div className='container my-3'>
