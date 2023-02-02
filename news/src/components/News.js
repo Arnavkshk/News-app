@@ -158,12 +158,19 @@ export class News extends Component {
   ];
   constructor() {
     super();
-    console.log("hello i am a constructor");
     this.state = {
       articles: this.articles,
       loading: false,
     };
   }
+
+  async componentDidMount(){
+    let url="https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb";
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState({articles: parsedData.articles})
+  }
+
   render() {
     return (
       <div className="container my-3">
