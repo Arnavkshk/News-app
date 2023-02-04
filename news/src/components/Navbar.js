@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 export class Navbar extends Component {
-  render() {
-    return (
+  render(){
+    return(
       <div>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">

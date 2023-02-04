@@ -18,8 +18,8 @@ export class News extends Component {
     this.setState({articles: parsedData.articles})
   }
 
-  render() {
-    return (
+  render(){
+    return(
       <div className="container my-3">
         <h2>NewsApp - Top News Headlines</h2>
         <div className="row">
