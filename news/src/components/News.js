@@ -8,6 +8,7 @@ export class News extends Component {
     this.state = {
       articles: [],
       loading: false,
+      page:1
     };
   }
 
@@ -16,6 +17,16 @@ export class News extends Component {
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({articles: parsedData.articles})
+  }
+
+  handlenexttext = ()=>{
+    this.setState({
+      page:this.state.page + 1,
+    })
+      console.log("next")
+  }
+  handleprevtext = ()=>{
+    console.log("prev")
   }
 
   render(){
@@ -30,8 +41,8 @@ export class News extends Component {
         })}
         </div>
         <div className="container d-flex justify-content-between">
-        <button type="button" class="btn btn-dark">Previous</button>
-        <button type="button" class="btn btn-dark">Next</button>
+        <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={this.handleprevtext}>&larr; Previous</button>
+        <button type="button" className="btn btn-dark" onClick={this.handlenexttext}>Next &rarr;</button>
         </div>
       </div>
     );
