@@ -19,14 +19,19 @@ export class News extends Component {
     this.setState({articles: parsedData.articles})
   }
 
-  handlenexttext = ()=>{
-    this.setState({
-      page:this.state.page + 1,
-    })
+  handlenexttext =async ()=>{
       console.log("next")
+      let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page+1}`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState({articles: parsedData.articles})
   }
-  handleprevtext = ()=>{
-    console.log("prev")
+  handleprevtext = async ()=>{
+    console.log("prev");
+    let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page-1}`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState({articles: parsedData.articles})
   }
 
   render(){
