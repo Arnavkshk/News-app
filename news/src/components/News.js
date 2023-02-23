@@ -13,22 +13,30 @@ export class News extends Component {
   }
 
   async componentDidMount(){
-    let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=1pageSize=${}`;
+    let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=1&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({articles: parsedData.articles})
   }
 
   handlenexttext =async ()=>{
-      console.log("next")
-      let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page+1}&pageSize=${}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    this.setState({articles: parsedData.articles})
+    console.log("next")
+    if(this.state.page+1>Math.ceil(this.state.totalResults/this.props.pageSize)){
+
+    }
+    else{
+      let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      this.setState({
+        page: this.state.page+1,
+        articles: parsedData.articles
+      })
+    }
   }
   handleprevtext = async ()=>{
     console.log("prev");
-    let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page-1}&pageSize=${}`;
+    let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({articles: parsedData.articles})
@@ -47,7 +55,7 @@ export class News extends Component {
         </div>
         <div className="container d-flex justify-content-between">
         <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={this.handleprevtext}>&larr; Previous</button>
-        <button type="button" className="btn btn-dark" onClick={this.handlenexttext}>Next &rarr;</button>
+        <button disabled={this.state.page+1>Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className="btn btn-dark" onClick={this.handlenexttext}>Next &rarr;</button>
         </div>
       </div>
     );
