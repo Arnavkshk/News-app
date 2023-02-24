@@ -1,8 +1,20 @@
 import React, { Component } from "react";
 import NewsItems from "./NewsItems";
 import Spinn from "./Spinn";
+import PropTypes from 'prop-types'
+
 
 export class News extends Component {
+  static defaultProps={
+    county:"in",
+    pageSize:8,
+    category: "general",
+  }
+  static propTypes={
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+    category: PropTypes.string,
+  }
   
   constructor() {
     super();
@@ -15,7 +27,7 @@ export class News extends Component {
 
   async componentDidMount(){
     this.setState({loading:true});
-    let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=1&pageSize=${this.props.pageSize}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d9484ba0267746dfba9de285f6c426bb&page=1&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({articles: parsedData.articles})
@@ -26,7 +38,7 @@ export class News extends Component {
     console.log("next")
     if(!(this.state.page+1>Math.ceil(this.state.totalResults/this.props.pageSize))){
       this.setState({loading:true});
-      let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
+      let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
       let data = await fetch(url);
       let parsedData = await data.json();
       this.setState({loading:false});
@@ -38,7 +50,7 @@ export class News extends Component {
   handleprevtext = async ()=>{
     console.log("prev");
     this.setState({loading:true});
-    let url=`https://newsapi.org/v2/everything?q=apple&from=2023-02-01&to=2023-02-01&sortBy=popularity&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
+    let url=`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d9484ba0267746dfba9de285f6c426bb&page=${this.state.page-1}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({loading:false});
@@ -48,7 +60,7 @@ export class News extends Component {
   render(){
     return(
       <div className="container my-3">
-        <h2>NewsApp - Top News Headlines</h2>
+        <h2 className="text-center" style={{margin:"30px"}}>NewsApp - Top News Headlines</h2>
         {this.state.loading && <Spinn/>}
         <div className="row">
         {!this.state.loading && this.state.articles.map((element)=>{ 
