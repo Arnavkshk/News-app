@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 export class News extends Component {
   static defaultProps={
-    county:"in",
+    county:"us",
     pageSize:8,
     category: "general",
   }
@@ -65,7 +65,7 @@ export class News extends Component {
         <div className="row">
         {!this.state.loading && this.state.articles.map((element)=>{ 
           return <div className="col-md-4" key={element.url}>
-            <NewsItems title={element.title.slice(0,45)} description={element.description.slice(0,80)} imageurl={element.urlToImage} newsurl={element.url}/>
+            <NewsItems title={element.title.slice(0,40)} description={element.description} imageurl={element.urlToImage} newsurl={element.url} author={element.author} date={element.publishedAt}/>
           </div>
         })}
         </div>
