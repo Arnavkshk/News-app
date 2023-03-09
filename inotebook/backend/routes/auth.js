@@ -7,7 +7,7 @@ var jwt=require('jsonwebtoken');
 const JWT_SECRET="hellow";
 
 router.post(
-  "/",
+  "/createuser",
   [
     body("name", "name is too small").isLength({ min: 3 }),
     body("email", "enter a valid email").isEmail(),
@@ -51,4 +51,29 @@ router.post(
     }
   }
 );
+
+router.post(
+  "/createuser",
+  [
+    body("email", "enter a valid email").isEmail(),
+    body("password", "Password cannot be blank").exists(),
+    
+  ],async (req,res)=>{
+    const errors = validationResult(req);
+    if(!errors.isempty()){
+      return res.status(400).json({errors:errors.array()});
+    }
+const {email,password}=req.body;
+  try {
+    let user=User.findOne({email});
+    if(!user){
+      return res.status(400).json({error:"please try to login with correct credentials"});
+    }
+
+    const passwordComapre=bcrypt.comapare(password,user.password);
+
+  } catch (error) {
+    
+  }
+  });
 module.exports = router;
