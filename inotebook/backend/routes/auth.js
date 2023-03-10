@@ -47,7 +47,7 @@ router.post(
       // res.json(user);
     } catch (error) {
       console.error(error.message);
-      res.status(500).send("some error occured");
+      res.status(500).send("Internal server error");
     }
   }
 );
@@ -69,11 +69,22 @@ const {email,password}=req.body;
     if(!user){
       return res.status(400).json({error:"please try to login with correct credentials"});
     }
-
     const passwordComapre=bcrypt.comapare(password,user.password);
+    if(!passwordComapre){
+      return res.status(400).json({error:"please try to login with correct credentials"})
+    }
+    const data={
+      user:{
+        id:user.id
+      }
+    }
+    const authdata=jwt.sign(data,JWT_SECRET);
+    res.json({authdata});
+
 
   } catch (error) {
-    
+    console.error(error.message);
+    res.status(500).send("Internal server error");
   }
   });
 module.exports = router;
