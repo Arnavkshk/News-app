@@ -44,7 +44,6 @@ router.post(
       const authdata=jwt.sign(data,JWT_SECRET);
       res.json({authdata});
 
-      // res.json(user);
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal server error");
