@@ -52,23 +52,23 @@ router.post(
 );
 
 router.post(
-  "/createuser",
+  "/login",
   [
     body("email", "enter a valid email").isEmail(),
     body("password", "Password cannot be blank").exists(),
     
   ],async (req,res)=>{
     const errors = validationResult(req);
-    if(!errors.isempty()){
+    if(!errors.isEmpty()){
       return res.status(400).json({errors:errors.array()});
     }
 const {email,password}=req.body;
   try {
-    let user=User.findOne({email});
+    let user= await User.findOne({email});
     if(!user){
       return res.status(400).json({error:"please try to login with correct credentials"});
     }
-    const passwordComapre=bcrypt.comapare(password,user.password);
+    const passwordComapre= await bcrypt.compare(password,user.password);
     if(!passwordComapre){
       return res.status(400).json({error:"please try to login with correct credentials"})
     }
