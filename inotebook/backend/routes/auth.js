@@ -86,4 +86,13 @@ const {email,password}=req.body;
     res.status(500).send("Internal server error");
   }
   });
+
+  try {
+    userId = "todo";
+    const user = await User.findById(userId).select("-passworde");
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error");
+  }
+
 module.exports = router;
