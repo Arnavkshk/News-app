@@ -97,4 +97,12 @@ const {email,password}=req.body;
     res.status(500).send("Internal server error");
   }
     })
+
+    router.post(
+      "/updatenote/:id",fetchuser,
+      [
+        body("email", "enter a valid email").isEmail(),
+        body("password", "Password cannot be blank").exists(),
+        
+      ],async (req,res)=>{
 module.exports = router;
