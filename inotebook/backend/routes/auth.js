@@ -105,4 +105,6 @@ const {email,password}=req.body;
         body("password", "Password cannot be blank").exists(),
         
       ],async (req,res)=>{
+        
+      })
 module.exports = router;
