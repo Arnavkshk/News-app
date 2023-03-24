@@ -98,13 +98,11 @@ const {email,password}=req.body;
   }
     })
 
-    router.post(
-      "/updatenote/:id",fetchuser,
-      [
-        body("email", "enter a valid email").isEmail(),
-        body("password", "Password cannot be blank").exists(),
-        
-      ],async (req,res)=>{
-        
+    router.put(
+      "/updatenote/:id",fetchuser,async (req,res)=>{
+        const{title,description,tag}=req.body;
+
+        const newNote={};
+        if (title){newNote.title=title};
       })
 module.exports = router;
