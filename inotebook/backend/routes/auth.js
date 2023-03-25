@@ -107,12 +107,13 @@ const {email,password}=req.body;
         if (description){newNote.description=description};
         if (tag){newNote.tag=tag};
 
-        let note= await Note.findById(req.params.id);
+        // eslint-disable-next-line no-use-before-define
+        let note= await note.findById(req.params.id);
         if(!note){return res.status(404).send("Not Found")}
         if(note.user.toString() !== req.user.id){
           return res.status(401).send("Not Allowed")
         }
-        note=await Note.findByIdAndUpdate(req.params.id, {$set:newNote},{new:true})
+        note=await note.findByIdAndUpdate(req.params.id, {$set:newNote},{new:true})
         res.json({note})
       })
 module.exports = router;
