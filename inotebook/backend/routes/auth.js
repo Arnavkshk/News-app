@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
@@ -42,10 +43,10 @@ router.post(
       const authdata=jwt.sign(data,JWT_SECRET);
       res.json({authdata});
 
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Internal server error");
-    }
+      } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal server error");
+      }
   }
 );
 
@@ -98,16 +99,17 @@ const {email,password}=req.body;
   }
     })
 
-    router.put(
-      "/updatenote/:id",fetchuser,async (req,res)=>{
-        const{title,description,tag}=req.body;
-
+    
+    
+    router.put("/updatenote/:id",fetchuser,async (req,res)=>{
+      const{title,description,tag}=req.body;
+      try {
+          
         const newNote={};
         if (title){newNote.title=title};
         if (description){newNote.description=description};
         if (tag){newNote.tag=tag};
 
-        // eslint-disable-next-line no-use-before-define
         let note= await note.findById(req.params.id);
         if(!note){return res.status(404).send("Not Found")}
         if(note.user.toString() !== req.user.id){
@@ -115,5 +117,27 @@ const {email,password}=req.body;
         }
         note=await note.findByIdAndUpdate(req.params.id, {$set:newNote},{new:true})
         res.json({note})
-      })
+      } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal server error");
+      }
+    })
+
+      router.delete(
+        "/deletenote/:id",fetchuser,async (req,res)=>{
+          try {
+            let note= await note.findById(req.params.id);
+            if(!note){return res.status(404).send("Not Found")}
+  
+          if(note.user.toString() !== req.user.id){
+            return res.status(401).send("Not Allowed")
+          }
+  
+          note=await note.findByIdAndDelete(req.params.id)
+          res.json({"success":"Note have been deleted",note:note})
+        } catch (error) {
+          console.error(error.message);
+          res.status(500).send("Internal server error");
+        }
+        })
 module.exports = router;
