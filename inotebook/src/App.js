@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import React from "react";
 import Home from './components/Home';
 import About from './components/About';
+import NoteState from './context/notes/notesState';
 
 import {
   BrowserRouter as Router,
@@ -13,6 +14,7 @@ import {
 function App() {
   return (
     <>
+    <NoteState>
     <Router>
     <Navbar/>
     <Routes>
@@ -26,8 +28,10 @@ function App() {
           <Route exact path="/technology" element={}></Route> */}
     </Routes>
     </Router>
+    </NoteState>
+    
     </>
   );
 }
-  
+
 export default App;
