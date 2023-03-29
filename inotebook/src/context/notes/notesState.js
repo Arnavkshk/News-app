@@ -1,24 +1,70 @@
+// import { useState } from "react";
 import { useState } from "react";
 import noteContext from "./notesContext";
 
 const NoteState = (props)=>{
-    const s1={
-        "name":"arnav",
-        "class":"cse-d"
-    }
+    const notesInitial=[
+        {
+          "_id": "64247f031206f3a7cb742119",
+          "user": "640f0d37dd183720945e228b",
+          "title": "my title",
+          "description": "dsajfhasdlfhkljadhsfasd wake up early",
+          "tag": "personal",
+          "date": "2023-03-29T18:10:11.296Z",
+          "__v": 0
+        },
+        {
+          "_id": "64247f031206f3a7cb742119",
+          "user": "640f0d37dd183720945e228b",
+          "title": "my title",
+          "description": "dsajfhasdlfhkljadhsfasd wake up early",
+          "tag": "personal",
+          "date": "2023-03-29T18:10:11.296Z",
+          "__v": 0
+        },
+        {
+          "_id": "64247f031206f3a7cb742119",
+          "user": "640f0d37dd183720945e228b",
+          "title": "my title",
+          "description": "dsajfhasdlfhkljadhsfasd wake up early",
+          "tag": "personal",
+          "date": "2023-03-29T18:10:11.296Z",
+          "__v": 0
+        },
+        {
+          "_id": "64247f031206f3a7cb742119",
+          "user": "640f0d37dd183720945e228b",
+          "title": "my title",
+          "description": "dsajfhasdlfhkljadhsfasd wake up early",
+          "tag": "personal",
+          "date": "2023-03-29T18:10:11.296Z",
+          "__v": 0
+        },
+        {
+          "_id": "64247f031206f3a7cb742119",
+          "user": "640f0d37dd183720945e228b",
+          "title": "my title",
+          "description": "dsajfhasdlfhkljadhsfasd wake up early",
+          "tag": "personal",
+          "date": "2023-03-29T18:10:11.296Z",
+          "__v": 0
+        },
+        {
+          "_id": "64247f031206f3a7cb742119",
+          "user": "640f0d37dd183720945e228b",
+          "title": "my title",
+          "description": "dsajfhasdlfhkljadhsfasd wake up early",
+          "tag": "personal",
+          "date": "2023-03-29T18:10:11.296Z",
+          "__v": 0
+        }
+      ]
 
-    const[state,setState]=useState(s1);
-    const update = ()=>{
-        setTimeout(()=>{
-            setState({
-                "name":"kaushik",
-                "class":"newclass"
-            })
-        },1000)
-    }
+      const[notes,setNotes]=useState(notesInitial)
+       
     return(
 
-        <noteContext.Provider value={{state,update}}>
+        <noteContext.Provider value={{notes,setNotes}}>
             {props.children}
         </noteContext.Provider>
     )
