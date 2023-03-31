@@ -10,6 +10,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import Alerts from './components/Alerts';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
     <NoteState>
     <Router>
     <Navbar/>
+    <Alerts message={"this is alert of inotebook"}/>
     <div className="container">
     <Routes>
           <Route exact path="/" element={ <Home/>}></Route> 

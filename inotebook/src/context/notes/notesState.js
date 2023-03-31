@@ -60,6 +60,17 @@ const NoteState = (props)=>{
         }
       ]
 
+      const addNote=()=>{
+
+      }
+      const deleteNote=()=>{
+
+      }
+
+      const editNote=()=>{
+        
+      }
+
       const[notes,setNotes]=useState(notesInitial)
        
     return(
