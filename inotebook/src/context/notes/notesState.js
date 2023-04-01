@@ -60,7 +60,8 @@ const NoteState = (props)=>{
         }
       ]
 
-      const addNote=()=>{
+      const addNote=(note)=>{
+        setNotes(notes.push(note))
 
       }
       const deleteNote=()=>{
@@ -75,7 +76,7 @@ const NoteState = (props)=>{
        
     return(
 
-        <noteContext.Provider value={{notes,setNotes}}>
+        <noteContext.Provider value={{notes,addNote,deleteNote,editNote}}>
             {props.children}
         </noteContext.Provider>
     )
