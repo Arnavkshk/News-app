@@ -5,7 +5,7 @@ import noteContext from "./notesContext";
 const NoteState = (props)=>{
     const notesInitial=[
         {
-          "_id": "64247f031206f3a7cb742119",
+          "_id": "64247f031206f3a7cb752119",
           "user": "640f0d37dd183720945e228b",
           "title": "my title",
           "description": "dsajfhasdlfhkljadhsfasd wake up early",
@@ -14,7 +14,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "64247f031206f3a7cb742119",
+          "_id": "64247f031206f3a7cb762119",
           "user": "640f0d37dd183720945e228b",
           "title": "my title",
           "description": "dsajfhasdlfhkljadhsfasd wake up early",
@@ -23,7 +23,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "64247f031206f3a7cb742119",
+          "_id": "64247f031206f3a7cb772119",
           "user": "640f0d37dd183720945e228b",
           "title": "my title",
           "description": "dsajfhasdlfhkljadhsfasd wake up early",
@@ -32,7 +32,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "64247f031206f3a7cb742119",
+          "_id": "64247f031206f3a7cb782119",
           "user": "640f0d37dd183720945e228b",
           "title": "my title",
           "description": "dsajfhasdlfhkljadhsfasd wake up early",
@@ -41,7 +41,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "64247f031206f3a7cb742119",
+          "_id": "64247f031206f3a7cb792119",
           "user": "640f0d37dd183720945e228b",
           "title": "my title",
           "description": "dsajfhasdlfhkljadhsfasd wake up early",
@@ -50,7 +50,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "64247f031206f3a7cb742119",
+          "_id": "64247f031206f3a7cb802119",
           "user": "640f0d37dd183720945e228b",
           "title": "my title",
           "description": "dsajfhasdlfhkljadhsfasd wake up early",
@@ -63,15 +63,15 @@ const NoteState = (props)=>{
       const addNote=(title,description
         ,tag)=>{
         const note= {
-          "_id": "64247f031206f3a7cb742119",
+          "_id": "64247f031206f3a7cb811119",
           "user": "640f0d37dd183720945e228b",
-          "title": "my new added note",
-          "description": "new note [added]",
-          "tag": "personal sadjhf",
+          "title": title,
+          "description": description,
+          "tag": tag,
           "date": "2023-03-29T18:10:11.296Z",
           "__v": 0
-        };
-        setNotes(notes.push(note))
+        };  
+        setNotes(notes.concat(note))
 
       }
       const deleteNote=()=>{
