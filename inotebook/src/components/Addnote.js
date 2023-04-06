@@ -1,4 +1,5 @@
 import React from 'react'
+import noteContext from "../context/notes/notesContext";
 
 const Addnote = () => {
   return (
@@ -19,7 +20,7 @@ const Addnote = () => {
             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
             <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
         </form>
    
       </div>
