@@ -75,7 +75,7 @@ const NoteState = (props)=>{
 
       }
       const deleteNote=()=>{
-
+        console.log("deketing note with id ",+id)
       }
 
       const editNote=()=>{
