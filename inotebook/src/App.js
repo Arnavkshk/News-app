@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import React from "react";
 import Home from './components/Home';
 import About from './components/About';
-import NoteState from './context/notes/notesState';
+import NoteState from './context/notes/noteState';
 
 import {
   BrowserRouter as Router,
