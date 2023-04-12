@@ -9,13 +9,16 @@ function Notes() {
   useEffect(()=>{
     getNotes()
   },[])
+  const updateNote = (note)=>{
+    
+  }
   return (
     <>
       {/* <Addnote/> */}
       <div className='row my-3'>
         <h3>Your notes</h3>
         {notes.map((note) => {
-          return <Noteitem key={note._id} note={note} /> 
+          return <Noteitem key={note._id} updateNote={updateNote} note={note} /> 
         })}
       </div>
     </>

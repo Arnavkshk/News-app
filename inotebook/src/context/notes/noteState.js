@@ -47,6 +47,7 @@ const NoteState = (props) => {
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQwZjBkMzdkZDE4MzcyMDk0NWUyMjhiIn0sImlhdCI6MTY3OTA1ODQ3NH0.XQQLYEtWxWv-fULhInFiwkAox6o7GzmxTJIvSNdtmjw"
       }
     });
+    // eslint-disable-next-line no-unused-vars
     const json = response.json(); 
     const newNotes = notes.filter((note) => { return note._id !== id })
     setNotes(newNotes)
@@ -63,6 +64,7 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({title, description, tag})
     });
+    // eslint-disable-next-line no-unused-vars
     const json = await response.json(); 
 
      let newNotes = JSON.parse(JSON.stringify(notes))
