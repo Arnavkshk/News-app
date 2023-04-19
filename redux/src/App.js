@@ -1,9 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import Shop from './components/Shop';
 
 function App() {
   return (
-    <h1>HELLO WORLD</h1>
+    <>
+    <Navbar/>
+    <div className="container">
+    <Shop/>
+    </div>
+    </>
   );
 }
 
